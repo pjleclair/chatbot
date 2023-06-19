@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
-export default function NewPage() {
+const NewPage = () => {
+
     return (
         <>
             <h1>New Page</h1>
@@ -8,3 +9,5 @@ export default function NewPage() {
         </>
     )
 }
+
+export default NewPage
