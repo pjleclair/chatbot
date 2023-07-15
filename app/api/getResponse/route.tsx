@@ -1,4 +1,6 @@
-const responseRouter = require('express').Router()
+import { NextApiRequest, NextApiResponse } from "next"
+import { NextResponse } from "next/server";
+
 require('dotenv').config()
 
 //OpenAI Configuration
@@ -6,9 +8,10 @@ const {ChatCompletionRequestMessage, Configuration, OpenAIApi} = require('openai
 const configuration = new Configuration({
     apiKey: process.env.API_KEY,
 })
+
 const openai = new OpenAIApi(configuration);
 
-const getResponse = async (userMsg) => {
+const getResponse = async (userMsg: String) => {
 
     const msg = [{role: "user", content: 
         userMsg
@@ -22,11 +25,10 @@ const getResponse = async (userMsg) => {
     return completion.data.choices[0].message
 }
 
-responseRouter.post('/', async (req, res) => {
-    const msg = req.body.userText
-    const reply = await getResponse(msg)
-    res.json(reply)
-})
+export async function POST(request: Request) {
+    const msg = await request.json()
+    const reply = await getResponse(msg.userText)
+    return NextResponse.json(reply)
+}
 
-module.exports = responseRouter;
 

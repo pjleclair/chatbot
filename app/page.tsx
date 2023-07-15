@@ -13,7 +13,7 @@ const Home = () => {
   const [botReply, setBotReply] = useState<BotReply>(null)
 
   const handleChat = async () => {
-    const response = await axios.post('/api/response', {userText}) as {data: {content: string}}
+    const response = await axios.post('/api/getResponse', {userText}) as {data: {content: string}}
     console.log(response)
     const responseJsx = <p className='border-solid border-white border-2 rounded-md p-2'>{response.data.content}</p>
     setBotReply(
@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1>
-        Welcome! Speak to the Oracle using the text box below.
+        Welcome! Speak to the AI using the text box below.
       </h1>
       <div>
         {(botReply) && botReply}
