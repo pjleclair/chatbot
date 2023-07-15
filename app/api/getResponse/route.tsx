@@ -1,8 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { NextResponse } from "next/server";
 
-require('dotenv').config()
-
 //OpenAI Configuration
 const {ChatCompletionRequestMessage, Configuration, OpenAIApi} = require('openai')
 const configuration = new Configuration({
