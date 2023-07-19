@@ -4,7 +4,7 @@ const NewPage = () => {
 
     return (
         <>
-            <h1>New Page</h1>
+            <h1>Created by LeClair.eth</h1>
             <Link href="/">Back to Home</Link>
         </>
     )

@@ -15,7 +15,10 @@ const Home = () => {
   const handleChat = async () => {
     const response = await axios.post('/api/getResponse', {userText}) as {data: {content: string}}
     console.log(response)
-    const responseJsx = <p className='border-solid border-white border-2 rounded-md p-2'>{response.data.content}</p>
+    const responseJsx = <p
+        className='border-solid border-white border-2 rounded-md p-2 whitespace-pre-wrap m-4'
+        dangerouslySetInnerHTML={{__html: response.data.content}}
+      ></p>
     setBotReply(
       responseJsx
     )
@@ -32,7 +35,7 @@ const Home = () => {
       </div>
       <div className='flex gap-2 items-center'>
         {'> '}
-        <input 
+        <textarea 
           value={userText}
           name='userText'
           className='flex flex-wrap overflow-visible bg-transparent border-solid border-white border-2'
@@ -42,7 +45,7 @@ const Home = () => {
         className='border-solid border-green-400 border-2 rounded-md p-1'
         >chat</button>
       </div>
-      <Link href='/pages/'>New Page</Link>
+      <Link className='m-4' href='/pages/'>Info</Link>
     </main>
   )
 }

@@ -11,8 +11,10 @@ const openai = new OpenAIApi(configuration);
 const getResponse = async (userMsg: String) => {
 
     const msg = [{role: "user", content: 
-        userMsg
+        `${userMsg}. Format your reply in HTML.`
     }]
+
+    console.log(msg)
 
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
