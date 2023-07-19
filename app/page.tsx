@@ -17,8 +17,7 @@ const Home = () => {
     console.log(response)
     const responseJsx = <p
         className='border-solid border-white border-2 rounded-md p-2 whitespace-pre-wrap m-4'
-        dangerouslySetInnerHTML={{__html: response.data.content}}
-      ></p>
+      >{response.data.content}</p>
     setBotReply(
       responseJsx
     )

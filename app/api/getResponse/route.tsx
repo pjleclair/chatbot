@@ -11,7 +11,7 @@ const openai = new OpenAIApi(configuration);
 const getResponse = async (userMsg: String) => {
 
     const msg = [{role: "user", content: 
-        `${userMsg}. Format your reply in HTML.`
+        `${userMsg}`
     }]
 
     console.log(msg)
