@@ -3,11 +3,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode, useState } from 'react'
+import { NextPage } from 'next'
 import axios from 'axios'
 
 type BotReply = ReactNode | null
 
-const Home = () => {
+const Home: NextPage = () => {
 
   const [userText, setUserText] = useState('')
   const [botReply, setBotReply] = useState<BotReply>(null)
@@ -44,7 +45,7 @@ const Home = () => {
         className='border-solid border-green-400 border-2 rounded-md p-1'
         >chat</button>
       </div>
-      <Link className='m-4' href='/pages/'>Info</Link>
+      <Link className='m-4' href='/info/'>Info</Link>
     </main>
   )
 }
