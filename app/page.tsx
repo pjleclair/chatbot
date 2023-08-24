@@ -26,8 +26,8 @@ const Home: NextPage = () => {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>
+    <main className="flex min-h-screen flex-col items-center justify-between">
+      <h1 className='p-2'>
         Welcome! Speak to the AI using the text box below.
       </h1>
       <div>
