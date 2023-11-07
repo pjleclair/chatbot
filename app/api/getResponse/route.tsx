@@ -17,7 +17,7 @@ const getResponse = async (userMsg: String) => {
     console.log(msg)
 
     const completion = await openai.createChatCompletion({
-        model: "gpt-4",
+        model: "gpt-4-1106-preview",
         messages: msg,
     })
 
