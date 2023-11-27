@@ -5,15 +5,18 @@ import Link from 'next/link'
 import { ReactNode, useState } from 'react'
 import { NextPage } from 'next'
 import axios from 'axios'
+import useSWR from 'swr'
 
 type BotReply = ReactNode | null
 
 const Home: NextPage = () => {
 
   const [userText, setUserText] = useState('')
+  const [userPrompt, setUserPrompt] = useState('')
   const [botReply, setBotReply] = useState<BotReply>(null)
 
   const handleChat = async () => {
+    setUserPrompt(userText)
     const response = await axios.post('/api/getResponse', {userText}) as {data: {content: string}}
     console.log(response)
     const responseJsx = <p
@@ -31,6 +34,7 @@ const Home: NextPage = () => {
         Welcome! Speak to the AI using the text box below.
       </h1>
       <div>
+        <div>{userPrompt}</div>
         {(botReply) && botReply}
       </div>
       <div className='flex gap-2 items-center'>

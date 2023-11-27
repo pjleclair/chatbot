@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
 
 //OpenAI Configuration
-const {ChatCompletionRequestMessage, Configuration, OpenAIApi} = require('openai')
-const configuration = new Configuration({
-    apiKey: process.env.API_KEY,
-})
+const { OpenAI } = require('openai');
 
-const openai = new OpenAIApi(configuration);
+const openai = new OpenAI({
+    apiKey: process.env.API_KEY,
+});
 
 const getResponse = async (userMsg: String) => {
 
@@ -16,12 +15,12 @@ const getResponse = async (userMsg: String) => {
 
     console.log(msg)
 
-    const completion = await openai.createChatCompletion({
+    const completion = await openai.chat.completions.create({
         model: "gpt-4-1106-preview",
         messages: msg,
     })
 
-    return completion.data.choices[0].message
+    return completion.choices[0].message
 }
 
 export async function POST(request: Request) {
