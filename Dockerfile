@@ -11,7 +11,7 @@ WORKDIR /app
 
 # Set production environment
 ENV NODE_ENV=production
-
+ENV API_KEY=$API_KEY
 
 # Throw-away build stage to reduce size of final image
 FROM base as build

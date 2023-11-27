@@ -2,9 +2,10 @@ import { NextResponse } from "next/server";
 
 //OpenAI Configuration
 const { OpenAI } = require('openai');
+const API_KEY = process.env.API_KEY
 
 const openai = new OpenAI({
-    apiKey: process.env.API_KEY,
+    apiKey: API_KEY,
 });
 
 const getResponse = async (userMsg: String) => {

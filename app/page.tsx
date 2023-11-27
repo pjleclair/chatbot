@@ -16,9 +16,10 @@ const Home: NextPage = () => {
   const [botReply, setBotReply] = useState<BotReply>(null)
 
   const handleChat = async () => {
-    setUserPrompt(userText)
+    
     const response = await axios.post('/api/getResponse', {userText}) as {data: {content: string}}
     console.log(response)
+    setUserPrompt(userText)
     const responseJsx = <p
         className='border-solid border-white border-2 rounded-md p-2 whitespace-pre-wrap m-4'
       >{response.data.content}</p>
